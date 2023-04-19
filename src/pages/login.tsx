@@ -1,19 +1,32 @@
-import { AuthButtons } from "@/components/AuthButtons";
-import { Heading, Text } from "@/components/Typography";
-import { LoginContainer, LogoSection, WelcomeSection } from "@/styles/pages/login";
+import { AuthButtons } from '@/components/AuthButtons'
+import { Heading, Text } from '@/components/Typography'
+import {
+  LoginContainer,
+  LogoSection,
+  WelcomeSection,
+} from '@/styles/pages/login'
+import Head from 'next/head'
 
-export default function Login () {
+export default function Login() {
   return (
     <LoginContainer>
+      <Head>
+        <title>Login | Book Wise</title>
+        <link rel="shortcut icon" href="/favicon.svg" type="image/svg" />
+      </Head>
+
       <LogoSection>
         <img src="/images/logo.svg" alt="Bookwise Logo" />
       </LogoSection>
 
       <WelcomeSection>
-        <Heading size="lg" color="gray-100"> Boas Vindas!</Heading>
+        <Heading size="lg" color="gray-100">
+          {' '}
+          Boas Vindas!
+        </Heading>
         <Text color="gray-200">Faça seu login ou acesse como visitante.</Text>
 
-        <AuthButtons/>
+        <AuthButtons />
       </WelcomeSection>
     </LoginContainer>
   )
