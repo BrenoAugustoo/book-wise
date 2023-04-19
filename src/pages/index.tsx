@@ -1,5 +1,7 @@
+import { useSession } from 'next-auth/react'
+
 export default function Home() {
-  return (
-   <h1>Hello World</h1>
-  )
+  const { data } = useSession()
+
+  return <pre>{JSON.stringify(data, null, 2)}</pre>
 }
