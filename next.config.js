@@ -7,6 +7,7 @@ const nextConfig = {
       'pbs.twimg.com',
       'comicvine.gamespot.com',
       'avatars.githubusercontent.com',
+      'upload.wikimedia.org',
     ],
   },
 }

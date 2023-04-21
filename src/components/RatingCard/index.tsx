@@ -66,7 +66,13 @@ export const RatingCard = ({ rating }: RatingCardProps) => {
               {rating.book.author}
             </Text>
           </div>
-          <Text size="sm" color="gray-300">
+          <Text
+            size="sm"
+            color="gray-300"
+            css={{
+              marginTop: '$5',
+            }}
+          >
             {bookSummary}
             {rating.book.summary.length > MAX_SUMMARY_LENGTH && (
               <ToggleShowMoreButton onClick={toggleShowMore}>

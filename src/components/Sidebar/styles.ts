@@ -2,10 +2,10 @@ import Link from 'next/link'
 import { styled } from '../../../stitches.config'
 
 export const SidebarContainer = styled('aside', {
-  width: 232,
+  width: '232px',
   height: 'calc(100% - 40px)',
   margin: 20,
-  background: '$gray700 url(/images/sidebar-bg.png) no-repeat center',
+  background: "$gray700 url('/images/sidebar-bg.png') no-repeat center",
   backgroundSize: 'cover',
   borderRadius: 12,
   display: 'flex',
@@ -14,6 +14,11 @@ export const SidebarContainer = styled('aside', {
   justifyContent: 'space-between',
   paddingTop: 40,
   paddingBottom: 24,
+
+  '.logo': {
+    width: 128,
+    marginBottom: 64,
+  },
 })
 
 export const LoginButton = styled(Link, {
@@ -24,14 +29,9 @@ export const LoginButton = styled(Link, {
   display: 'flex',
   alignItems: 'center',
   gap: '$3',
-  transition: '0.2s',
 
   svg: {
     color: '$green100',
-  },
-
-  '&:hover': {
-    color: '$gray300',
   },
 })
 

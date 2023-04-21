@@ -1,7 +1,14 @@
 import Image from 'next/image'
 import { styled } from '../../../stitches.config'
 
-export const RatingCardContainer = styled('div', {})
+export const RatingCardContainer = styled('div', {
+  width: '100%',
+  borderRadius: 8,
+  padding: '$6',
+  display: 'flex',
+  flexDirection: 'column',
+  background: '$gray700',
+})
 
 export const UserDetails = styled('div', {
   display: 'flex',
