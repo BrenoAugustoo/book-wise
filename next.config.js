@@ -8,6 +8,7 @@ const nextConfig = {
       'comicvine.gamespot.com',
       'avatars.githubusercontent.com',
       'upload.wikimedia.org',
+      'images.unsplash.com',
     ],
   },
 }
