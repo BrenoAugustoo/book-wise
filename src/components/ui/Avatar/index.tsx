@@ -1,7 +1,7 @@
 import { ComponentProps } from '@stitches/react'
-import { AvatarContainer, AvatarImage } from './styles'
+import { AvatarImage, AvatarContainer } from './styles'
 
-interface AvatarProps extends ComponentProps<typeof AvatarContainer> {
+type AvatarProps = ComponentProps<typeof AvatarContainer> & {
   src: string
   size?: 'sm' | 'md' | 'lg'
   alt: string
@@ -10,7 +10,7 @@ interface AvatarProps extends ComponentProps<typeof AvatarContainer> {
 export const Avatar = ({ src, alt, size = 'md', ...props }: AvatarProps) => {
   return (
     <AvatarContainer size={size} {...props}>
-      <AvatarImage src={src} alt={alt} width={80} height={80} />
+      <AvatarImage src={src} width={80} height={80} alt={alt} />
     </AvatarContainer>
   )
 }

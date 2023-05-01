@@ -8,6 +8,7 @@ import {
 } from './styles'
 import { Text } from '../Typography'
 import { RatingStars } from '../RatingStars'
+import { RatingsDialog } from '../RatingDialog'
 
 export type BookWithAvgRating = Book & {
   avgRating: number
@@ -34,28 +35,30 @@ export const BookCard = ({ book, size = 'md' }: BookCardProps) => {
   const currentSize = IMAGE_SIZES[size]
 
   return (
-    <BookCardContainer>
-      {book?.alreadyRead && <ReadBadge>LIDO</ReadBadge>}
+    <RatingsDialog bookId={book.id}>
+      <BookCardContainer>
+        {book?.alreadyRead && <ReadBadge>LIDO</ReadBadge>}
 
-      <PopularBookImage
-        width={currentSize.width}
-        height={currentSize.height}
-        alt={book.name}
-        src={book.cover_url}
-        css={{
-          minWidth: currentSize.width,
-        }}
-      />
+        <PopularBookImage
+          width={currentSize.width}
+          height={currentSize.height}
+          alt={book.name}
+          src={book.cover_url}
+          css={{
+            minWidth: currentSize.width,
+          }}
+        />
 
-      <PopularBookDetails>
-        <div>
-          <PopularBookName size="xs">{book.name}</PopularBookName>
-          <Text size="sm" color="gray-400">
-            {book.author}
-          </Text>
-        </div>
-        <RatingStars rating={book.avgRating} />
-      </PopularBookDetails>
-    </BookCardContainer>
+        <PopularBookDetails>
+          <div>
+            <PopularBookName size="xs">{book.name}</PopularBookName>
+            <Text size="sm" color="gray-400">
+              {book.author}
+            </Text>
+          </div>
+          <RatingStars rating={book.avgRating} />
+        </PopularBookDetails>
+      </BookCardContainer>
+    </RatingsDialog>
   )
 }
