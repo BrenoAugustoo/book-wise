@@ -20,7 +20,7 @@ export const BookCardContainer = styled('div', {
 })
 
 export const ReadBadge = styled('span', {
-  position: 'aboslute',
+  position: 'absolute',
   display: 'block',
   background: '#0A313C',
   top: 0,

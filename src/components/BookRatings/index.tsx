@@ -16,6 +16,10 @@ export const BookRatings = ({ bookId, ratings }: BookRatingsProps) => {
     setShowForm(true)
   }
 
+  const sortedRatingsbyDate = ratings.sort((a, b) => {
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+  })
+
   return (
     <BookRatingsContainer>
       <header>
@@ -28,7 +32,7 @@ export const BookRatings = ({ bookId, ratings }: BookRatingsProps) => {
           <RatingForm bookId={bookId} onCancel={() => setShowForm(false)} />
         )}
 
-        {ratings?.map((rating) => (
+        {sortedRatingsbyDate?.map((rating) => (
           <UserRatingCard key={rating.id} rating={rating} />
         ))}
       </section>
