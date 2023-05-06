@@ -26,7 +26,7 @@ export default function Login() {
         </Heading>
         <Text color="gray-200">Faça seu login ou acesse como visitante.</Text>
 
-        <AuthButtons />
+        <AuthButtons canGuest />
       </WelcomeSection>
     </LoginContainer>
   )
