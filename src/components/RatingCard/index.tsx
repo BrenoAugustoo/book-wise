@@ -6,6 +6,7 @@ import {
   BookImage,
   BookContent,
   ToggleShowMoreButton,
+  CompactDetails,
 } from './styles'
 import { Avatar } from '../ui/Avatar'
 import { Book, Rating, User } from '@prisma/client'
@@ -21,11 +22,15 @@ export type RatingWithAuthorAndBook = Rating & {
 
 interface RatingCardProps {
   rating: RatingWithAuthorAndBook
+  variant?: 'default' | 'compact'
 }
 
 const MAX_SUMMARY_LENGTH = 180
 
-export const RatingCard = ({ rating }: RatingCardProps) => {
+export const RatingCard = ({
+  rating,
+  variant = 'default',
+}: RatingCardProps) => {
   const distance = getRelativeTimeString(new Date(rating.created_at), 'pt-BR')
   const {
     text: bookSummary,
@@ -34,21 +39,23 @@ export const RatingCard = ({ rating }: RatingCardProps) => {
   } = useToggleShowMore(rating.book.summary, MAX_SUMMARY_LENGTH)
 
   return (
-    <RatingCardContainer>
-      <UserDetails>
-        <section>
-          <Link href={`/profile/${rating.user_id}`}>
-            <Avatar src={rating.user.avatar_url!} alt={rating.user.name} />
-          </Link>
-          <div>
-            <Text>{rating.user.name}</Text>
-            <Text size="sm" color="gray-400">
-              {distance}
-            </Text>
-          </div>
-        </section>
-        <RatingStars rating={rating.rate} />
-      </UserDetails>
+    <RatingCardContainer variant={variant}>
+      {variant === 'default' && (
+        <UserDetails>
+          <section>
+            <Link href={`/profile/${rating.user_id}`}>
+              <Avatar src={rating.user.avatar_url!} alt={rating.user.name} />
+            </Link>
+            <div>
+              <Text>{rating.user.name}</Text>
+              <Text size="sm" color="gray-400">
+                {distance}
+              </Text>
+            </div>
+          </section>
+          <RatingStars rating={rating.rate} />
+        </UserDetails>
+      )}
 
       <BookDetails>
         <Link href={`/explore?book=${rating.book_id}`}>
@@ -61,6 +68,15 @@ export const RatingCard = ({ rating }: RatingCardProps) => {
         </Link>
         <BookContent>
           <div>
+            {variant === 'compact' && (
+              <CompactDetails>
+                <Text size="sm" color="gray-300">
+                  {distance}
+                </Text>
+                <RatingStars rating={rating.rate} />
+              </CompactDetails>
+            )}
+
             <Heading size="xs">{rating.book.name}</Heading>
             <Text size="sm" color="gray-400">
               {rating.book.author}

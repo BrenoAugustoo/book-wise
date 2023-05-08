@@ -19,7 +19,7 @@ export const BookRatings = ({ bookId, ratings }: BookRatingsProps) => {
   const isAuthenticated = status === 'authenticated'
 
   const handleRate = () => {
-    if (isAuthenticated) return
+    if (!isAuthenticated) return
     setShowForm(true)
   }
 
