@@ -1,9 +1,9 @@
-import { styled } from "../../../stitches.config";
+import { styled } from '../../../stitches.config'
 
 export const AuthButtonsContainer = styled('section', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '$4'
+  gap: '$4',
 })
 
 export const AuthButton = styled('button', {
@@ -18,5 +18,5 @@ export const AuthButton = styled('button', {
   padding: '0 $6',
   display: 'flex',
   alignItems: 'center',
-  gap: '$5'
+  gap: '$5',
 })

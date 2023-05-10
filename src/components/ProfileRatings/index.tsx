@@ -1,12 +1,13 @@
-import { Book, CategoriesOnBooks, Category, Rating } from '@prisma/client'
-import { ProfileRatingsContainer, RatingsList } from './styles'
 import { PageTitle } from '../ui/PageTitle'
+import { Container, RatingsList } from './styles'
 import { MagnifyingGlass, User } from '@phosphor-icons/react'
-import { Link } from '../ui/Link'
-import { Input } from '../ui/Form/Input'
-import { useMemo, useState } from 'react'
+import { Input } from '../ui/form/Input'
+import { Book, CategoriesOnBooks, Category, Rating } from '@prisma/client'
 import { ProfileRatingCard } from './ProfileRatingCard'
+import { useMemo, useState } from 'react'
 import { Text } from '../Typography'
+import { useSession } from 'next-auth/react'
+import { Link } from '../ui/Link'
 
 export type ProfileRating = Rating & {
   book: Book & {
@@ -19,12 +20,12 @@ export type ProfileRating = Rating & {
 
 type ProfileRatingsProps = {
   ratings: ProfileRating[]
-  isOnProfile: boolean
+  isOwnProfile?: boolean
 }
 
 export const ProfileRatings = ({
-  isOnProfile,
   ratings,
+  isOwnProfile,
 }: ProfileRatingsProps) => {
   const [search, setSearch] = useState('')
 
@@ -35,9 +36,9 @@ export const ProfileRatings = ({
   }, [ratings, search])
 
   return (
-    <ProfileRatingsContainer>
-      {isOnProfile ? (
-        <PageTitle title="Perfil" icon={<User size={25} />} />
+    <Container>
+      {isOwnProfile ? (
+        <PageTitle icon={<User size={25} />} title="Perfil" />
       ) : (
         <Link
           href="/"
@@ -55,17 +56,19 @@ export const ProfileRatings = ({
         onChange={({ target }) => setSearch(target.value)}
       />
       <RatingsList>
-        {filteredRatings.map((rating) => (
+        {filteredRatings?.map((rating) => (
           <ProfileRatingCard key={rating.id} rating={rating} />
         ))}
         {filteredRatings.length <= 0 && (
-          <Text color="gray-400" css={{ textAlign: 'center' }}>
-            {search
-              ? 'Nenhum resultado encontrado'
-              : 'Nenhuma avaliação encontrada'}
-          </Text>
+          <>
+            <Text color="gray-400" css={{ textAlign: 'center' }}>
+              {search
+                ? 'Nenhum resultado encontrado'
+                : 'Nenhuma avaliação encontrada'}
+            </Text>
+          </>
         )}
       </RatingsList>
-    </ProfileRatingsContainer>
+    </Container>
   )
 }

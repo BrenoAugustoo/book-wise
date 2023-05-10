@@ -1,10 +1,10 @@
-import { styled } from "../../../stitches.config";
+import { styled } from '../../../stitches.config'
 
 export const LoginContainer = styled('main', {
   display: 'grid',
   gridTemplateColumns: '1.1fr 1fr',
   padding: 20,
-  minHeight: '100vh'
+  minHeight: '100vh',
 })
 
 export const LogoSection = styled('section', {
@@ -15,7 +15,7 @@ export const LogoSection = styled('section', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: 10
+  borderRadius: 10,
 })
 
 export const WelcomeSection = styled('section', {
@@ -27,6 +27,6 @@ export const WelcomeSection = styled('section', {
   justifyContent: 'center',
   paddingLeft: 20,
   section: {
-    marginTop: 40
-  }
+    marginTop: 40,
+  },
 })
