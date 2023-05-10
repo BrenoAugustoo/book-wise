@@ -1,7 +1,7 @@
 import { PageTitle } from '../ui/PageTitle'
-import { Container, RatingsList } from './styles'
+import { ProfileRatingsContainer, RatingsList } from './styles'
 import { MagnifyingGlass, User } from '@phosphor-icons/react'
-import { Input } from '../ui/form/Input'
+import { Input } from '../ui/Form/Input'
 import { Book, CategoriesOnBooks, Category, Rating } from '@prisma/client'
 import { ProfileRatingCard } from './ProfileRatingCard'
 import { useMemo, useState } from 'react'
@@ -20,12 +20,12 @@ export type ProfileRating = Rating & {
 
 type ProfileRatingsProps = {
   ratings: ProfileRating[]
-  isOwnProfile?: boolean
+  isOnProfile?: boolean
 }
 
 export const ProfileRatings = ({
   ratings,
-  isOwnProfile,
+  isOnProfile,
 }: ProfileRatingsProps) => {
   const [search, setSearch] = useState('')
 
@@ -36,8 +36,8 @@ export const ProfileRatings = ({
   }, [ratings, search])
 
   return (
-    <Container>
-      {isOwnProfile ? (
+    <ProfileRatingsContainer>
+      {isOnProfile ? (
         <PageTitle icon={<User size={25} />} title="Perfil" />
       ) : (
         <Link
@@ -69,6 +69,6 @@ export const ProfileRatings = ({
           </>
         )}
       </RatingsList>
-    </Container>
+    </ProfileRatingsContainer>
   )
 }
