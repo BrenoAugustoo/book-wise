@@ -16,7 +16,7 @@ export default function Login() {
       </Head>
 
       <LogoSection>
-        <img src="/images/logo.svg" alt="Bookwise " />
+        <img src="/images/logo.svg" alt="Bookwise Logo " />
       </LogoSection>
 
       <WelcomeSection>
